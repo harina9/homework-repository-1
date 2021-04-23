@@ -1,13 +1,24 @@
-def check_fibonacci(data_to_process):
-    def _check_window(x: int, y: int, z: int) -> bool:
-        return (x + y) == z
+"""
+Given a cell with "it's a fib sequence" from slideshow,
+    please write function "check_fib", which accepts a Sequence of integers, and
+    returns if the given sequence is a Fibonacci sequence
+We guarantee, that the given sequence contain >= 0 integers inside.
+"""
+from typing import Sequence
 
-    a, b, c = data_to_process[0], data_to_process[1], data_to_process[2]
-    while len(data_to_process) >= 3:
-        if not _check_window(a, b, c):
-            return "it's not a fib sequence!"
-        data_to_process = data_to_process[1:]
-        if len(data_to_process) >= 3:
-            a, b, c = b, c, data_to_process[2]
-        else:
-            return "it's a fib sequence!"
+
+def generate_fibonacci(start_el):
+    first, second = 0, 1
+    while True:
+        if first >= start_el:
+            yield first
+        first, second = second, first + second
+
+
+def check_fibonacci(data: Sequence[int]) -> bool:
+    for our_number, fib_number in zip(data, generate_fibonacci(5)):
+        if our_number != fib_number:
+            return False
+
+    return True
+
