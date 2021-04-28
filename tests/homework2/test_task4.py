@@ -1,7 +1,9 @@
 import pytest
+
 from homework2.task4 import cache
 
 counter = 0
+
 
 def test_cache_decorator():
     @cache

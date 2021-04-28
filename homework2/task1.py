@@ -7,14 +7,15 @@ Given a file containing text. Complete using only default collections:
     5) Find most common non ascii char for document
 """
 
-from typing import List
-from nltk import word_tokenize
-from collections import OrderedDict
 import string
+from collections import OrderedDict
+from typing import List
+
+from nltk import word_tokenize
 
 
 def get_longest_diverse_words(file_path: str) -> List[str]:
-    with open(file_path, 'r', encoding='unicode-escape') as file:
+    with open(file_path, "r", encoding="unicode-escape") as file:
         text = file.read()
         text_tokens = word_tokenize(text)
         d = {}
@@ -33,7 +34,7 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
 
 
 def count_punctuation_chars(file_path: str) -> int:
-    with open(file_path, 'r', encoding='unicode-escape') as file:
+    with open(file_path, "r", encoding="unicode-escape") as file:
         text = file.read()
         punctuation_chars = string.punctuation
         count = 0
@@ -41,11 +42,11 @@ def count_punctuation_chars(file_path: str) -> int:
         for element in text:
             if element in punctuation_chars:
                 count += 1
-    return count
+        return count
 
 
 def get_rarest_char(file_path: str) -> str:
-    with open(file_path, 'r', encoding='unicode-escape') as file:
+    with open(file_path, "r", encoding="unicode-escape") as file:
         text = file.read()
         every_char = {}
 
@@ -55,14 +56,12 @@ def get_rarest_char(file_path: str) -> str:
             else:
                 every_char[element] = 1
 
-    list_every_char = list(every_char.items())
-    list_every_char.sort(key=lambda i: i[1])
-    return list_every_char[0][0]
-
+        rarest_char = min(every_char, key=every_char.get)
+        return rarest_char
 
 
 def count_non_ascii_chars(file_path: str) -> int:
-    with open(file_path, 'r', encoding='unicode-escape') as file:
+    with open(file_path, "r", encoding="unicode-escape") as file:
         text = file.read()
         count_char = 0
 
@@ -71,11 +70,11 @@ def count_non_ascii_chars(file_path: str) -> int:
                 if not char.isascii():
                     count_char += 1
 
-    return count_char
+        return count_char
 
 
 def get_most_common_non_ascii_char(file_path: str) -> str:
-    with open(file_path, 'r', encoding='unicode-escape') as file:
+    with open(file_path, "r", encoding="unicode-escape") as file:
         text = file.read()
         d = {}
 
@@ -87,8 +86,5 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
                     else:
                         d[char] = 1
 
-    list_d = list(d.items())
-    list_d.sort(key=lambda i: i[1])
-    return list_d[-1][0]
-
-
+        common_char = max(d, key=d.get)
+        return common_char

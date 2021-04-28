@@ -17,4 +17,3 @@ from typing import List, Tuple
 
 def major_and_minor_elem(a) -> Tuple[int, int]:
     return max(set(a), key=a.count), min(set(a), key=a.count)
-
