@@ -7,14 +7,13 @@ Examples:
     result = 16
 """
 
+
 def find_maximal_subarray_sum(nums, k) -> int:
-    max_sum = float('inf')
+    max_sum = float("inf")
     for subarray in range(1, k + 1):
         for starting_point in range(len(nums) - subarray + 1):
-            new_sum = sum(nums[starting_point:starting_point + subarray])
+            new_sum = sum(nums[starting_point : starting_point + subarray])
             if new_sum > max_sum:
                 new_sum = max_sum
 
     return new_sum
-
-print(find_maximal_subarray_sum([-3, -10, -7, -7], 3))
