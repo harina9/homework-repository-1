@@ -18,4 +18,3 @@ def find_maximal_subarray_sum(nums, k) -> int:
 
     return new_sum
 
-find_maximal_subarray_sum([4, 5, 1, 7, 8, 9], 3) == 24
