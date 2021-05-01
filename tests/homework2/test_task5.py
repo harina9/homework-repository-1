@@ -1,14 +1,14 @@
 import string
 
-from homework2.task5 import custom_range
+import homework2.task5
 
 
 def test_one_arg():
-    assert custom_range(string.ascii_lowercase, "g") == ["a", "b", "c", "d", "e", "f"]
+    assert homework2.task5.custom_range(string.ascii_lowercase, "g") == ["a", "b", "c", "d", "e", "f"]
 
 
 def test_two_args():
-    assert custom_range(string.ascii_lowercase, "g", "p") == [
+    assert homework2.task5.custom_range(string.ascii_lowercase, "g", "p") == [
         "g",
         "h",
         "i",
@@ -22,7 +22,7 @@ def test_two_args():
 
 
 def test_three_args():
-    assert custom_range(string.ascii_lowercase, "p", "g", -2) == [
+    assert homework2.task5.custom_range(string.ascii_lowercase, "p", "g", -2) == [
         "p",
         "n",
         "l",
