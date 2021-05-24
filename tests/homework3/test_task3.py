@@ -1,16 +1,6 @@
 import pytest
 
-from homework3.task3 import make_filter
-
-sample_data = [
-    {
-        "name": "Bill",
-        "last_name": "Gilbert",
-        "occupation": "was here",
-        "type": "person",
-    },
-    {"is_dead": True, "kind": "parrot", "type": "bird", "name": "polly"},
-]
+from homework3.task3 import make_filter, sample_data
 
 
 def test_positive_case():
@@ -22,3 +12,11 @@ def test_positive_case():
             "type": "person",
         }
     ]
+
+
+def test_negative_filter():
+    assert make_filter(name="polly", type="person").apply(sample_data) == []
+
+
+def test_no_filter():
+    assert make_filter().apply(sample_data) == sample_data
