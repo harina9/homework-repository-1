@@ -1,9 +1,12 @@
+import sys
 from unittest.mock import Mock
 
 import pytest
 import requests
 
 from homework4.task2 import count_dots_on_i
+
+sys.path.append("C:\Python\Python38\Lib\site-packages")
 
 
 def test_positive_without_monkey_patch():
