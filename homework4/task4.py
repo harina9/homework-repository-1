@@ -35,7 +35,7 @@ def fizzbuzz(n: int) -> List[str]:
     :param n: int
     :return: List[str]
 
-    In oreder to run doctests use 'doctest' lib:
+    In oreder to run doctests use the 'doctest' lib:
     doctest.testmod()
 
     >>> fizzbuzz(5)
