@@ -35,6 +35,9 @@ def fizzbuzz(n: int) -> List[str]:
     :param n: int
     :return: List[str]
 
+    In oreder to run doctests use 'doctest' lib:
+    doctest.testmod()
+
     >>> fizzbuzz(5)
     ['1', '2', 'Fizz', '4', 'Buzz']
 

@@ -25,5 +25,9 @@ import requests
 
 
 def count_dots_on_i(url: str) -> int:
-    text = requests.get(url).text
+    try:
+        text = requests.get(url).text
+    except ConnectionError:
+        raise ValueError("Unreachable {url}")
+
     return text.count("i")
