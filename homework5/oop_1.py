@@ -41,7 +41,6 @@ class Homework:
         """Homework class constructor
         :param text: homework text
         :param deadline: amount of days after that homework will become invalid
-        :return: Nothing
         """
         self.text = text
         self.deadline = timedelta(days=deadline)
@@ -58,6 +57,10 @@ class Homework:
 
 class Student:
     def __init__(self, first_name, last_name):
+        """Student class constructor
+        :param first_name: student's name
+        :param last_name: student's surname
+        """
         self.first_name = first_name
         self.last_name = last_name
 
@@ -73,6 +76,10 @@ class Student:
 
 class Teacher:
     def __init__(self, first_name, last_name):
+        """Teacher class constructor
+        :param first_name: teacher's name
+        :param last_name: teacher's surname
+        """
         self.first_name = first_name
         self.last_name = last_name
 
