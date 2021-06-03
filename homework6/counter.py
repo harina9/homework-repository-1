@@ -28,10 +28,9 @@ def instances_counter(cls):
 
         @classmethod
         def reset_instances_counter(cls):
-            try:
-                return cls.instances
-            finally:
-                cls.instances = 0
+            result = cls.instances
+            cls.instances = 0
+            return result
 
     return Counter
 

@@ -10,6 +10,7 @@ good_student = Student("Lev", "Sokolov")
 
 oop_hw = opp_teacher.create_homework("Learn OOP", 1)
 docs_hw = opp_teacher.create_homework("Read docs", 5)
+out_of_deadline_hw = opp_teacher.create_homework("Something clever", 0)
 
 result_1 = good_student.do_homework(oop_hw, "I have done this hw")
 result_2 = good_student.do_homework(docs_hw, "I have done this hw too")
@@ -49,6 +50,10 @@ def test_DeadlineError():
     late_hw = opp_teacher.create_homework("Out of Date Task", 0)
     with pytest.raises(DeadlineError):
         lazy_student.do_homework(late_hw, "It was not possible to make it in time")
+
+
+def test_is_active():
+    assert not out_of_deadline_hw.is_active()
 
 
 def test_second_entry_of_the_same_homework_result_is_not_possible():

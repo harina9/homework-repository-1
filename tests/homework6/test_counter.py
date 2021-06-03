@@ -1,22 +1,22 @@
 import pytest
 
-from homework6.counter import User
+from homework6.counter import User, instances_counter
 
 
-def test_first_user():
+@instances_counter
+class User:
+    pass
+
+
+def test_first_call():
     assert User.get_created_instances() == 0
+
+
+def test_with_instances():
     user, _, _ = User(), User(), User()
-    assert user.get_created_instances() == 3
-    assert user.reset_instances_counter() == 3
+    assert User.get_created_instances() == 3
 
 
-class User2(User):
-    def __init__(self, a):
-        self.a = a
-        super().__init__()
-
-
-def test_another_user():
-    assert User2.get_created_instances() == 0
-    User2("test2"), User2("test2")
-    assert User2.get_created_instances() == 2
+def test_reset_instances():
+    assert User.reset_instances_counter() == 3
+    assert User.get_created_instances() == 0
