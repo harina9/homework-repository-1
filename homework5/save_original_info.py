@@ -17,8 +17,8 @@ import functools
 
 
 def add_attribute_for_function(func):
+    """Function-wrapper for wrapper which save information about original function"""
     def wrapper_for_attribute(*args, **kwargs):
-        """Function-wrapper which return original id """
         func.__original_func = func
         func(*args, **kwargs)
         return func.__original_func
