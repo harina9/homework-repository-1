@@ -1,7 +1,3 @@
-from functools import partial
-from typing import Dict, List, Union
-
-
 class Filter:
     """
     Helper filter class. Accepts a list of single-argument
@@ -19,15 +15,14 @@ def make_filter(**keywords):
     """
     Generate filter object for specified keywords
     """
-
-    def keyword_filter_func(keywords, key, value):
-        return keywords.get(key) == value
-
-    new_funcs = []
+    filter_funcs = []
     for key, value in keywords.items():
-        filter_funcs = partial(keyword_filter_func, key=key, value=value)
-        new_funcs.append(filter_funcs)
-    return Filter(new_funcs)
+
+        def keyword_filter_func(value):
+            return value[key] == value
+
+        filter_funcs.append(keyword_filter_func)
+    return Filter(filter_funcs)
 
 
 sample_data = [
@@ -40,4 +35,12 @@ sample_data = [
     {"is_dead": True, "kind": "parrot", "type": "bird", "name": "polly"},
 ]
 
-print(make_filter(name="Bill", type="person").apply(sample_data))
+print(make_filter(name="polly", type="bird").apply(sample_data))
+
+
+def test_faulty_case_number_1():
+    """Testing that make_filter function does not return True because of the line
+    value[key] == value"""
+    functions = make_filter(name="polly", type="bird").functions
+    item = {"is_dead": True, "kind": "parrot", "type": "bird", "name": "polly"}
+    assert not any(i(item) for i in functions)
