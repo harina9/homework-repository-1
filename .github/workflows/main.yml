@@ -16,9 +16,7 @@ jobs:
       - name: Run script
         run: |
           pip install black isort pytest
-          pip install nltk
           ls -la
           black --check .
-          isort --check .
+          isort --profile black --check .
           py.test tests
-
