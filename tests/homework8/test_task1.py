@@ -4,7 +4,8 @@ import pytest
 
 from homework8.task1 import KeyValueStorage
 
-storage = KeyValueStorage("task1.txt")
+path_data = "./tests/homework8/task1.txt"
+storage = KeyValueStorage(path_data)
 
 
 def test_key():
