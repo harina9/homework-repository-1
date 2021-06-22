@@ -18,6 +18,3 @@ def test_creating_function_from_method_and_using_it():
     create_homework_too = teacher.create_homework
     oop_homework = create_homework_too("create 2 simple classes", 5)
     assert oop_homework.deadline == datetime.timedelta(days=5)
-
-
-
