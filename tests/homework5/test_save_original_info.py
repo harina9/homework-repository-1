@@ -1,6 +1,7 @@
 import functools
 
-from homework5.save_original_info import custom_sum, add_attribute_for_function
+from homework5.save_original_info import add_attribute_for_function, custom_sum
+
 
 def decorator(func):
     @functools.wraps(func)
@@ -25,8 +26,6 @@ def test_save_original_info_saves_docs_of_custom_sum():
 def test_save_original_info_saves_name_of_custom_sum():
     assert custom_sum.__name__ == "custom_sum"
 
+
 def test_decorator_name_doc_original_info():
     assert decorated_func.__original_func == some_func
-
-
-
