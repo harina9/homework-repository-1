@@ -16,7 +16,6 @@ jobs:
       - name: Run script
         run: |
           pip install black isort pytest nltk requests sqlalchemy
-          import nltk
           nltk.download('punkt')
           ls -la
           black --check .
